@@ -17,7 +17,11 @@ class GoogleAnalytics
     utility::string_t m_client;
 	utility::string_t m_appName;
 
+	void GoogleAnalytics::addStandardQueries(web::uri_builder *uri) const;
+
 	public:
     GoogleAnalytics(const utility::string_t &property, const utility::string_t &appName, utility::string_t &client);
-    void sendEvent(const utility::string_t &category, const utility::string_t &action, const utility::string_t &label, uint32_t value) const;
+	void beginSession(uint32_t width, uint32_t height) const;
+	void endSession() const;
+    void sendEvent(const utility::string_t &category, const utility::string_t &action, const utility::string_t &label, uint32_t value = 0) const;
 };
